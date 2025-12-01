@@ -1,0 +1,17 @@
+spring:
+  application:
+   name: comedyclub
+  ai:
+    ollama:
+      chat:
+        model: phi3
+
+springdoc:
+  cache:
+    disabled: true
+  swagger-ui:
+    display-request-duration: true
+    use-root-path: true
+    groups-order: DESC
+    operationsSorter: method
+  version: 1.0

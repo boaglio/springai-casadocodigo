@@ -1,2 +1,4 @@
-# springai-comedyclub
-Spring AI Comedy Club
+# springai-casadocodigo
+
+Spring AI - Casa do Código
+

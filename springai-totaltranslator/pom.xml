@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.boaglio.springai</groupId>
-	<artifactId>comedyclub</artifactId>
+	<artifactId>totaltranslator</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>comedyclub</name>
-	<description>Spring AI Comedy Club</description>
+	<name>totaltranslator</name>
+	<description>Spring AI Total Translator</description>
 
 	<properties>
 		<java.version>25</java.version>

@@ -1,22 +1,13 @@
 spring:
   application:
-   name: comedyclub
+   name: totaltranslator
   ai:
     ollama:
       chat:
         model: phi3
 
-logging:
-  level:
-    org:
-      springframework:
-        ai:
-          chat:
-            client:
-              advisor: DEBUG
-
 server:
-  port: 8000
+  port: 8100
 
 springdoc:
   cache:

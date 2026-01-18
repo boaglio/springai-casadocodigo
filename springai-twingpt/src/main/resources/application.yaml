@@ -1,22 +1,9 @@
 spring:
   application:
-   name: comedyclub
-  ai:
-    ollama:
-      chat:
-        model: phi3
-
-logging:
-  level:
-    org:
-      springframework:
-        ai:
-          chat:
-            client:
-              advisor: DEBUG
+   name: twingpt
 
 server:
-  port: 8000
+  port: 8200
 
 springdoc:
   cache:

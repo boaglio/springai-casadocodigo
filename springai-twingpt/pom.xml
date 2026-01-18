@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.boaglio.springai</groupId>
-	<artifactId>comedyclub</artifactId>
+	<artifactId>twingpt</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>comedyclub</name>
-	<description>Spring AI Comedy Club</description>
+	<name>twingpt</name>
+	<description>Spring AI Twin GPT</description>
 
 	<properties>
 		<java.version>25</java.version>
@@ -29,10 +29,10 @@
             <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
             <version>${springdoc-openapi-starter-webmvc-ui.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.ai</groupId>
-            <artifactId>spring-ai-starter-model-ollama</artifactId>
-        </dependency>
+		<dependency>
+			<groupId>org.springframework.ai</groupId>
+			<artifactId>spring-ai-starter-model-ollama</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>

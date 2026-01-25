@@ -10,11 +10,10 @@ public class PiadaTechComLogAPI {
 
     private final ChatClient.Builder chatClient;
 
-    SimpleLoggerAdvisor customLogger = new SimpleLoggerAdvisor(
-            request -> "Request: " + request.prompt().getUserMessage(),
-            response -> "Response: " + response.getResults(),
-            0
-    );
+    SimpleLoggerAdvisor customLogger = SimpleLoggerAdvisor.builder()
+            .requestToString(request -> "Request: " + request.prompt().getUserMessage())
+            .responseToString(response -> "Response: " + response.getResults())
+            .build();
 
     public PiadaTechComLogAPI(ChatClient.Builder chatClient) {
         this.chatClient = chatClient;
@@ -22,7 +21,7 @@ public class PiadaTechComLogAPI {
 
     @GetMapping("/api/nova-piada-tech-com-log")
     public String piadaTechComLog() {
-        var userPrompt = "Write a tech joke in Portuguese";
+        var userPrompt = "Write a short tech joke in Portuguese";
         return chatClient
                 .build()
                 .prompt()

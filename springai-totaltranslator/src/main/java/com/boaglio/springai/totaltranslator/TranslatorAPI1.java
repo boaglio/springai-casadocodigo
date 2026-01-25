@@ -1,9 +1,7 @@
 package com.boaglio.springai.totaltranslator;
 
 import org.springframework.ai.chat.client.ChatClient;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class TranslatorAPI1 {
@@ -18,8 +16,8 @@ public class TranslatorAPI1 {
         this.chatClient = chatClient;
     }
 
-    @PostMapping("/api1/portugues-para-ingles/{texto}")
-    public String traduzIngles (@PathVariable String texto) {
+    @GetMapping("/api1/portugues-para-ingles")
+    public String traduzIngles (@RequestParam String texto) {
 
         var prompt = "Translate from Portuguese to English: %s".formatted(texto);
 
@@ -32,8 +30,8 @@ public class TranslatorAPI1 {
                 .content();
     }
 
-    @PostMapping("/api1/portugues-para-espanhol/{texto}")
-    public String traduzEspanhol (@PathVariable String texto) {
+    @GetMapping("/api1/portugues-para-espanhol")
+    public String traduzEspanhol (@RequestParam String texto) {
 
         var prompt = "Translate from Portuguese to Spanish: %s".formatted(texto);
 

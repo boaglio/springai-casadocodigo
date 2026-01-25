@@ -1,9 +1,7 @@
 package com.boaglio.springai.totaltranslator;
 
 import org.springframework.ai.chat.client.ChatClient;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
@@ -21,8 +19,8 @@ public class TranslatorAPI2 {
         this.chatClient = chatClient;
     }
 
-    @PostMapping("/api2/portugues-para-ingles/{texto}")
-    public String traduzIngles (@PathVariable String texto) {
+    @GetMapping("/api2/portugues-para-ingles")
+    public String traduzIngles (@RequestParam String texto) {
 
         return chatClient
                 .build()
@@ -33,8 +31,8 @@ public class TranslatorAPI2 {
                 .content();
     }
 
-    @PostMapping("/api2/portugues-para-espanhol/{texto}")
-    public String traduzEspanhol (@PathVariable String texto) {
+    @GetMapping("/api2/portugues-para-espanhol")
+    public String traduzEspanhol (@RequestParam String texto) {
 
         return chatClient
                 .build()

@@ -11,7 +11,7 @@ public class PiadaTechAPI {
 
     private final ChatClient.Builder chatClient;
 
-    private final String userPrompt = "Write a tech joke in Portuguese";
+    private final String userPrompt = "Write a short tech joke in Portuguese";
 
     public PiadaTechAPI(ChatClient.Builder chatClient) {
         this.chatClient = chatClient;

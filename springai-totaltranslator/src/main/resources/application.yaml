@@ -2,12 +2,21 @@ spring:
   application:
    name: totaltranslator
   ai:
+    chat:
+      memory:
+        repository:
+          jdbc:
+            initialize-schema: always
     ollama:
       chat:
-        model: phi3
+        model: ministral-3:3b
+  datasource:
+    password: admin
+    username: admin
+    url: jdbc:postgresql://localhost/totaltranslatordb
 
 server:
-  port: 8100
+  port: 12000
 
 springdoc:
   cache:

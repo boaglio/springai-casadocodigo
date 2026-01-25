@@ -16,7 +16,7 @@ logging:
               advisor: DEBUG
 
 server:
-  port: 8000
+  port: 11000
 
 springdoc:
   cache:

@@ -17,15 +17,13 @@ public class ListaPiadaAPI {
     }
 
     @GetMapping("/api/lista-piadas")
-    public List<Piadas> listaPiadas() {
+    public List<Piada> listaPiadas() {
 
-        var systemPrompt = "I am an AI system that generates response without double quotes and only valid text for a JSON field";
-        var userPrompt = "Write three jokes in Portuguese";
+        var userPrompt = "Write four short jokes in Portuguese";
 
         return chatClient
                 .build()
                 .prompt()
-                .system(systemPrompt)
                 .user(userPrompt)
                 .call()
                 .entity(new ParameterizedTypeReference<>() {});

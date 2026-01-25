@@ -1,3 +1,3 @@
 package com.boaglio.springai.comedyclub;
 
-public record Piadas(String piada){}
+public record Piada(String piada){}

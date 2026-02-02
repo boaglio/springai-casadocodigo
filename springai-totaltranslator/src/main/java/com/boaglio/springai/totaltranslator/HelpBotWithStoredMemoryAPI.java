@@ -1,7 +1,7 @@
 package com.boaglio.springai.totaltranslator;
 
 import org.springframework.ai.chat.client.ChatClient;
-import org.springframework.ai.chat.client.advisor.PromptChatMemoryAdvisor;
+import org.springframework.ai.chat.client.advisor.MessageChatMemoryAdvisor;
 import org.springframework.ai.chat.memory.ChatMemory;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,10 +12,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class HelpBotWithStoredMemoryAPI {
 
     private final ChatClient chatClient;
+    private final ChatMemory chatMemory;
 
-    public HelpBotWithStoredMemoryAPI(ChatClient.Builder chatClient, PromptChatMemoryAdvisor promptChatMemoryAdvisor) {
+    public HelpBotWithStoredMemoryAPI(ChatClient.Builder chatClient, ChatMemory chatMemory) {
+        this.chatMemory = chatMemory;
         this.chatClient = chatClient
-                .defaultAdvisors(promptChatMemoryAdvisor)
+                .defaultAdvisors(MessageChatMemoryAdvisor.builder(chatMemory).build())
                 .defaultSystem(system)
                 .build() ;
     }

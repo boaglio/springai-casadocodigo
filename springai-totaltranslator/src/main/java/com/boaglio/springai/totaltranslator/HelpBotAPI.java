@@ -13,28 +13,32 @@ public class HelpBotAPI {
     }
 
     String system = """
-        Besides the user message also inform that we have
-        APIs that can translate text from Portuguese to English
-        or Spanish.
+        You are an customer service assistant for Total Translator.
+        You can ONLY discuss:
+         - translate texts from English to Portuguese
+         - translate texts from Spanish to Portuguese
+        Answer in Portuguese only.
+        If asked about anything else, respond:
+        "Desculpe, a ajuda é apenas sobre traduções".
         """;
 
     @GetMapping("/api1/ajuda")
-    public String ajuda1 (@RequestParam String pergunte) {
+    public String ajuda1 (@RequestParam String pergunta) {
         return chatClient
                 .build()
                 .prompt()
-                .user(pergunte)
+                .user(pergunta)
                 .call()
                 .content();
     }
 
     @GetMapping("/api2/ajuda")
-    public String ajuda2 (@RequestParam String pergunte) {
+    public String ajuda2 (@RequestParam String pergunta) {
         return chatClient
                 .build()
                 .prompt()
                 .system(system)
-                .user(pergunte)
+                .user(pergunta)
                 .call()
                 .content();
     }

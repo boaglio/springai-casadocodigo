@@ -1,7 +1,7 @@
 package com.boaglio.springai.totaltranslator;
 
 import org.springframework.ai.chat.client.ChatClient;
-import org.springframework.ai.chat.client.advisor.PromptChatMemoryAdvisor;
+import org.springframework.ai.chat.client.advisor.MessageChatMemoryAdvisor;
 import org.springframework.ai.chat.memory.ChatMemory;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,15 +14,15 @@ public class HelpBotWithMemoryAPI {
     public HelpBotWithMemoryAPI(ChatClient.Builder chatClient, ChatMemory chatMemory) {
         this.chatMemory = chatMemory;
         this.chatClient = chatClient
-                .defaultAdvisors(PromptChatMemoryAdvisor.builder(chatMemory).build())
+                .defaultAdvisors(MessageChatMemoryAdvisor.builder(chatMemory).build())
                 .defaultSystem(system)
                 .build() ;
     }
 
     String system = """
         Besides the user message also inform that we have
-        APIs that can translate text from Portuguese to English
-        or Spanish.
+        APIs that can translate text from English
+        or Spanish to Portuguese.
         """;
 
     @GetMapping("/api/ajuda/{usuario}")

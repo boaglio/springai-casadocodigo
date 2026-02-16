@@ -1,0 +1,32 @@
+spring:
+  application:
+   name: comedyclub-croq
+  ai:
+    openai:
+      api-key: ${GROQ_API_KEY}
+      base-url: https://api.groq.com/openai
+      chat:
+        options:
+          model: openai/gpt-oss-120b
+
+logging:
+  level:
+    org:
+      springframework:
+        ai:
+          chat:
+            client:
+              advisor: DEBUG
+
+server:
+  port: 15000
+
+springdoc:
+  cache:
+    disabled: true
+  swagger-ui:
+    display-request-duration: true
+    use-root-path: true
+    groups-order: DESC
+    operationsSorter: method
+  version: 1.0

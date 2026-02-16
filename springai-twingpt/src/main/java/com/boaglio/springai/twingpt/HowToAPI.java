@@ -1,13 +1,12 @@
 package com.boaglio.springai.twingpt;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class HowToAPI {
 
-    private final String userPrompt = "Explain in Portuguese how to ride a bike ";
+    private final String userPrompt = "Explain in Portuguese how to ride a bike";
 
     private final TwinChatService twinChatService;
 

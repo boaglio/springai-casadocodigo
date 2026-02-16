@@ -1,0 +1,31 @@
+spring:
+  application:
+   name: comedyclub-openai
+  ai:
+    openai:
+      api-key: ${OPENAI_API_KEY}
+      chat:
+        options:
+          model: gpt-4o-mini
+
+logging:
+  level:
+    org:
+      springframework:
+        ai:
+          chat:
+            client:
+              advisor: DEBUG
+
+server:
+  port: 14000
+
+springdoc:
+  cache:
+    disabled: true
+  swagger-ui:
+    display-request-duration: true
+    use-root-path: true
+    groups-order: DESC
+    operationsSorter: method
+  version: 1.0

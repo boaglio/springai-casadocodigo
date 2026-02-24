@@ -1,0 +1,44 @@
+logging:
+  level:
+   org.springframework.ai.mcp: DEBUG
+
+server:
+  port: 20000
+
+spring:
+  ai:
+    mcp:
+      server:
+        name: springai-mcp-cinema
+        type: SYNC
+        protocol: SSE  # or STDIO, STREAMABLE
+        capabilities:
+          tool: true
+          resource: true
+          prompt: true
+          completion: true
+        annotation-scanner:
+          enabled: true
+
+  application:
+    name: springai-cinema
+  datasource:
+    url:  jdbc:h2:mem:bilheteria
+  h2:
+    console:
+      enabled: true
+      path: /h2
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+
+springdoc:
+  cache:
+    disabled: true
+  swagger-ui:
+    display-request-duration: true
+    use-root-path: true
+    groups-order: DESC
+    operationsSorter: method
+  version: 1.0

@@ -1,0 +1,47 @@
+spring:
+  application:
+   name: vendo-tudo
+  ai:
+    ollama:
+      chat:
+        memory:
+          repository:
+            jdbc:
+              initialize-schema: always
+        model: llama3.2
+      embedding:
+        model: mxbai-embed-large
+        options:
+          num-batch: 10
+    vectorstore:
+      pgvector:
+        dimensions: 1536
+        distance-type: COSINE_DISTANCE
+        index-type: HNSW
+        initialize-schema: true
+  datasource:
+    username: admin
+    password: admin
+    url: jdbc:postgresql://localhost/vendotudo_vectordb
+
+logging:
+  level:
+    org:
+      springframework:
+        ai:
+          chat:
+            client:
+              advisor: DEBUG
+
+server:
+  port: 16000
+
+springdoc:
+  cache:
+    disabled: true
+  swagger-ui:
+    display-request-duration: true
+    use-root-path: true
+    groups-order: DESC
+    operationsSorter: method
+  version: 1.0

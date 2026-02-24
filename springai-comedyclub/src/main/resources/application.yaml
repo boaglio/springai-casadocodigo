@@ -4,7 +4,12 @@ spring:
   ai:
     ollama:
       chat:
-        model: phi3
+      # model: phi3
+        model: ministral-3:3b
+    mcp:
+      client:
+        transport: sse
+        sse.connections.meucinemaserver.url: http://localhost:20000
 
 logging:
   level:

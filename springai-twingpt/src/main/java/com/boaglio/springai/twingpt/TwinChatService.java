@@ -10,15 +10,15 @@ public class TwinChatService {
 
     private final ChatModel phi3ChatModel;
     private final ChatModel ministral3ChatModel;
-    private final ContentSafetyAdvisor contentSafetyAdvisor;
+    private final SegurancaDeConteudoAdvisor segurancaDeConteudoAdvisor;
 
     public TwinChatService(
             @Qualifier("phi3ChatModel")       ChatModel phi3ChatModel,
-            @Qualifier("ministral3ChatModel") ChatModel ministral3ChatModel, ContentSafetyAdvisor contentSafetyAdvisor
+            @Qualifier("ministral3ChatModel") ChatModel ministral3ChatModel, SegurancaDeConteudoAdvisor segurancaDeConteudoAdvisor
     ) {
         this.phi3ChatModel = phi3ChatModel;
         this.ministral3ChatModel = ministral3ChatModel;
-        this.contentSafetyAdvisor = contentSafetyAdvisor;
+        this.segurancaDeConteudoAdvisor = segurancaDeConteudoAdvisor;
     }
 
     public String phi3answer(String pergunta) {
@@ -29,7 +29,7 @@ public class TwinChatService {
         return ministral3ChatModel.call(pergunta);
     }
 
-    public String evalAnswer(String pergunta) {
+    public String perguntaSegura(String pergunta) {
 
         var chatClient = ChatClient
                 .builder(ministral3ChatModel)
@@ -38,7 +38,7 @@ public class TwinChatService {
         return chatClient
                 .prompt()
                 .user(pergunta)
-                .advisors(contentSafetyAdvisor)
+                .advisors(segurancaDeConteudoAdvisor)
                 .call()
                 .content();
     }

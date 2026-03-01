@@ -1,0 +1,7 @@
+name: 'twingpt'
+services:
+ tracer:
+    image: openzipkin/zipkin:latest
+    container_name: twingpt_zipkin
+    ports:
+      - "9411:9411"

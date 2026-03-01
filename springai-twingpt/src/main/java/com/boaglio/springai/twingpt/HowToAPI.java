@@ -26,11 +26,11 @@ public class HowToAPI {
 
 
     @GetMapping("/api/eval/how-to")
-    public String evalAnswer(String pergunta) {
+    public String perguntaSegura(String pergunta) {
         String answer;
         try {
-            answer = twinChatService.evalAnswer(pergunta);
-        } catch ( GuardrailViolationException gve) {
+            answer = twinChatService.perguntaSegura(pergunta);
+        } catch (GuardrailViolationException gve) {
             answer = gve.getMessage();
         }
         return answer;

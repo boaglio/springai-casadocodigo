@@ -8,19 +8,24 @@ import org.springframework.core.Ordered;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ContentSafetyAdvisor implements CallAdvisor {
+public class SegurancaDeConteudoAdvisor implements CallAdvisor {
 
     private final GuardRailUtil guardRailUtil;
 
-    public ContentSafetyAdvisor(GuardRailUtil guardRailUtil) {
+    public SegurancaDeConteudoAdvisor(GuardRailUtil guardRailUtil) {
         this.guardRailUtil = guardRailUtil;
     }
 
     @Override
     public ChatClientResponse adviseCall(ChatClientRequest request, CallAdvisorChain chain) {
 
-        var userInput = request.prompt().getUserMessage().getText();
-        if (guardRailUtil.containsProhibitedContent(userInput)) {
+        var sanitizedInput = guardRailUtil.sanitizeInput(request.prompt().getUserMessage().getText());
+
+        if (sanitizedInput.contains(GuardRailUtil.CONTEUDO_FILTRADO)) {
+            throw new GuardrailViolationException("Desculpe, identificamos acesso ilegal na pergunta");
+        }
+
+        if (guardRailUtil.containsProhibitedContent(sanitizedInput)) {
             throw new GuardrailViolationException("Desculpe, identificamos conteúdo inapropriado na pergunta");
         }
 
@@ -33,7 +38,7 @@ public class ContentSafetyAdvisor implements CallAdvisor {
         return response;
     }
 
-    public String getName() { return "ContentSafetyAdvisor"; }
+    public String getName() { return "SegurancaDeConteudoAdvisor"; }
 
     @Override
     public int getOrder() { return Ordered.HIGHEST_PRECEDENCE; }

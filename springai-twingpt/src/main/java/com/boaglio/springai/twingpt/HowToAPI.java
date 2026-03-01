@@ -24,4 +24,16 @@ public class HowToAPI {
         return twinChatService.ministral3Answer(userPrompt);
     }
 
+
+    @GetMapping("/api/eval/how-to")
+    public String evalAnswer(String pergunta) {
+        String answer;
+        try {
+            answer = twinChatService.evalAnswer(pergunta);
+        } catch ( GuardrailViolationException gve) {
+            answer = gve.getMessage();
+        }
+        return answer;
+    }
+
 }

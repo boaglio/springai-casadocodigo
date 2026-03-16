@@ -11,8 +11,6 @@ spring:
         model: llama3.2
       embedding:
         model: mxbai-embed-large
-        options:
-          num-batch: 10
     vectorstore:
       pgvector:
         dimensions: 1536

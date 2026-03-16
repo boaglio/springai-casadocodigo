@@ -1,6 +1,6 @@
 name: 'vendotudo'
 services:
- db:
+  db:
     image: pgvector/pgvector:pg17
     container_name: vendotudo_vectordb
     environment:
@@ -8,6 +8,6 @@ services:
       - POSTGRES_PASSWORD=admin
       - POSTGRES_DB=vendotudo_vectordb
     volumes:
-      - ./db-data:/var/lib/postgresql/data
+      - ./postgresql-data:/var/lib/postgresql/data
     ports:
       - "5432:5432"

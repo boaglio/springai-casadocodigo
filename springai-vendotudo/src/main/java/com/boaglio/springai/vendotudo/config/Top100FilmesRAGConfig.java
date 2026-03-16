@@ -14,7 +14,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Component;
 
-import java.io.IOException;
 import java.util.List;
 
 @Component
@@ -35,7 +34,7 @@ public class Top100FilmesRAGConfig   {
     }
 
     @Bean
-    public SimpleVectorStore getSimpleVectorStoreTop100Filmes() throws IOException {
+    public SimpleVectorStore getSimpleVectorStoreTop100Filmes() {
 
         var simpleVectorStore = SimpleVectorStore.builder(embeddingModel).build();
         var vectorStoreFile = FileUtil.getVectorStoreFile(vectorStoreName);
@@ -51,17 +50,8 @@ public class Top100FilmesRAGConfig   {
 
             var pdfReader = new PagePdfDocumentReader(pdfTodosFilmesAnos80,
                     PdfDocumentReaderConfig.builder()
-                            .withPagesPerDocument(1) // one Document per page
+                            .withPagesPerDocument(1) // 1 Document por pagina
                             .build());
-
-//            List<Document> documents = pdfReader.get().stream()
-//                    .flatMap(doc -> Arrays.stream(doc.getText().split("\n")))
-//                    .map(String::trim)
-//                    .filter(line -> !line.isBlank())
-//                    .map(line -> new Document(line, Map.of("source", "filmes-anos80.pdf")))
-//                    .toList();
-//
-//            log.info("Total de filmes extraídos: {}", documents.size());
 
             var textSplitter = new TokenTextSplitter(
                     10,  // chunkSize
@@ -76,7 +66,7 @@ public class Top100FilmesRAGConfig   {
 
             List<Document> documents = textSplitter.apply(pdfReader.get())
                     .stream()
-                    .peek(doc -> doc.getMetadata().put("source", "filmes-anos80.pdf"))
+                    .peek(doc -> doc.getMetadata().put("source", "imdb-100GreatestMoviesOfThe1980s.pdf"))
                     .toList();
             log.info("Chunks após tokenização: {}", documents.size());
 

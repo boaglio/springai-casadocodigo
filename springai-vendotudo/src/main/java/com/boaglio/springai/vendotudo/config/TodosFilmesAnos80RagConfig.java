@@ -33,7 +33,7 @@ public class TodosFilmesAnos80RagConfig {
     }
 
     @Bean
-    public PgVectorStore getPgVectorStore(JdbcTemplate jdbcTemplate) throws IOException, InterruptedException {
+    public PgVectorStore getPgVectorStore(JdbcTemplate jdbcTemplate) throws IOException {
 
         var pgVectorStore = PgVectorStore.builder(jdbcTemplate, embeddingModel)
                 .initializeSchema(true)

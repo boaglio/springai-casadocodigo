@@ -36,7 +36,7 @@ public class FilmeService {
             return false;
         }
 
-        var result =filmeRepository.findByTituloIgnoreCase(titulo.trim()).isPresent();
+        var result = filmeRepository.findByTituloIgnoreCase(titulo.trim()).isPresent();
 
         log.info(" >> "+result);
 

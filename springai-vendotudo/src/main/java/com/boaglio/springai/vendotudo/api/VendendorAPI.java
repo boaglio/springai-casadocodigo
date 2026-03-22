@@ -88,7 +88,7 @@ public class VendendorAPI {
         this.chatMemory = chatMemory;
         this.chatClient = chatClient
                 .defaultAdvisors(MessageChatMemoryAdvisor.builder(chatMemory).build())
-//                .defaultTools(new CompradorService())
+                .defaultTools(new CompradorService())
                 .defaultSystem(system)
                 .build() ;
     }

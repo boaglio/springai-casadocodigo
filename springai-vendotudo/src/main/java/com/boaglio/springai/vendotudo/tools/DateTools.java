@@ -6,11 +6,11 @@ import org.springframework.ai.tool.annotation.Tool;
 
 public class DateTools {
 
-    @Tool(description = "Get the current date")
-    String hoje() {
-        var now = LocalDate.now().toString();
-        IO.println("Chamou hoje! ");
-        return now;
+    @Tool(description = "Get the current year")
+    String ano() {
+        var year = LocalDate.now().getYear();
+        IO.println("Ano atual: %s".formatted(year));
+        return String.valueOf(year);
     }
 
 }

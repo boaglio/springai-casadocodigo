@@ -12,6 +12,8 @@ public class PrecoAPI {
     private final ChatClient.Builder chatClient;
     private final ToolCallbackProvider mcpToolProvider;
 
+    String system = "Answer **always in Portuguese**";
+
     public PrecoAPI(ChatClient.Builder chatClient, ToolCallbackProvider mcpToolProvider) {
         this.chatClient = chatClient;
         this.mcpToolProvider = mcpToolProvider;
@@ -20,11 +22,12 @@ public class PrecoAPI {
     @GetMapping("/api/preco/{pergunta}")
     public String qualPreco(@PathVariable String pergunta) {
 
-        var userPrompt = "Always answer in Portuguese. Each movie costs US$5, but a famous movie is US$10. Requested Movie: ";
+        var userPrompt = "Each movie costs US$5, but a famous movie is US$10. Requested Movie: ";
 
         return chatClient
                 .build()
                 .prompt()
+                .system(system)
                 .toolCallbacks(mcpToolProvider)
                 .user(userPrompt+pergunta)
                 .call()
@@ -40,6 +43,7 @@ public class PrecoAPI {
         return chatClient
                 .build()
                 .prompt()
+                .system(system)
                 .toolCallbacks(mcpToolProvider)
                 .user(userPrompt+filme)
                 .call()

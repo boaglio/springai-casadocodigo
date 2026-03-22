@@ -11,7 +11,7 @@ spring:
       server:
         name: springai-mcp-cinema
         type: SYNC
-        protocol: SSE  # or STDIO, STREAMABLE
+        protocol: SSE
         capabilities:
           tool: true
           resource: true

@@ -29,7 +29,8 @@ public class RAGVendendorAPI {
         **Use only that context** to answer questions about the movies. 
         - If the user asks about a movie **not present in the context**, respond:  
           "Sorry, that movie is not available in my catalog at the moment."  
-        - If the movie is in the context, provide the relevant information (cast, director, plot, etc.) based on the context, then assume the user is a buyer. Ask which movies they want to purchase and request their contact information (do not ask about payment or delivery).  
+        - If the movie is in the context, provide the relevant information (cast, director, plot, etc.) based on the context, then assume the user is a buyer. 
+        Ask which movies they want to purchase and request their contact information (do not ask about payment or delivery).  
           Example: "Each DVD costs US$5. Which movies would you like to buy? Please provide your contact so the owner can reach out shortly."  
         - After the user provides contact, confirm that the owner will contact them soon.  
         - The price for each DVD is fixed at US$5 (this is independent of context).  
@@ -49,7 +50,7 @@ public class RAGVendendorAPI {
                         MessageChatMemoryAdvisor.builder(chatMemory).build(),
                         QuestionAnswerAdvisor.builder(vectorStore).build()
                 )
-//                .defaultTools(new CompradorService())
+                .defaultTools(new CompradorService())
                 .defaultSystem(system)
                 .build() ;
     }

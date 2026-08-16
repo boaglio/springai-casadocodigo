@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-public class RAGVendendorAPI {
+public class RAGVendedorAPI {
 
     private final ChatMemory chatMemory;
     private final ChatClient chatClient;
@@ -40,9 +40,9 @@ public class RAGVendendorAPI {
         - Do not invent any movie details not present in the context.
         """;
 
-    public RAGVendendorAPI(ChatMemory chatMemory,
-                           ChatClient.Builder chatClient,
-                           @Qualifier("getSimpleVectorStoreMeusFilmes")  VectorStore vectorStore) {
+    public RAGVendedorAPI(ChatMemory chatMemory,
+                          ChatClient.Builder chatClient,
+                          @Qualifier("getSimpleVectorStoreMeusFilmes")  VectorStore vectorStore) {
         this.chatMemory = chatMemory;
         this.vectorStore = vectorStore;
         this.chatClient = chatClient

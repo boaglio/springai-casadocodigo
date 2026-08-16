@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class VendendorAPI {
+public class VendedorAPI {
 
     private final ChatMemory chatMemory;
     private final ChatClient chatClient;
@@ -84,7 +84,7 @@ public class VendendorAPI {
          Tubarão
         """;
 
-    public VendendorAPI(ChatMemory chatMemory, ChatClient.Builder chatClient) {
+    public VendedorAPI(ChatMemory chatMemory, ChatClient.Builder chatClient) {
         this.chatMemory = chatMemory;
         this.chatClient = chatClient
                 .defaultAdvisors(MessageChatMemoryAdvisor.builder(chatMemory).build())

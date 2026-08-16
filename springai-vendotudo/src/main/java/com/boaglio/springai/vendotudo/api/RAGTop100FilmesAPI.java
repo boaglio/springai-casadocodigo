@@ -58,11 +58,11 @@ public class RAGTop100FilmesAPI {
     @GetMapping("/api/rag/filmes-debug")
     public Map<String,List<String>> debug(@RequestParam String pergunta) {
         return Map.of(
-                "0.0",similaritySearch(pergunta,0.1),
+                "0.1",similaritySearch(pergunta,0.1),
                 "0.3",similaritySearch(pergunta,0.3),
                 "0.5",similaritySearch(pergunta,0.5),
                 "0.7",similaritySearch(pergunta,0.7),
-                "1.0",similaritySearch(pergunta,0.9)
+                "0.9",similaritySearch(pergunta,0.9)
         );
     }
 

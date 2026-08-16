@@ -13,7 +13,7 @@ public class HelpBotAPI {
     }
 
     String system = """
-        You are an customer service assistant for Total Translator.
+        You are a customer service assistant for Total Translator.
         You can ONLY discuss:
          - translate texts from English to Portuguese
          - translate texts from Spanish to Portuguese
